@@ -1,4 +1,2 @@
-.dotfiles
-=========
-
-configuration files for common modules (zsh, vim, tmux, etc...).
+# dot files
+My custom configs for common modules (zsh, tmux, vim)
