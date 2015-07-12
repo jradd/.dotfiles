@@ -107,20 +107,52 @@
 @counter-style counter-style {
   system: cyclic;
   negative: symbolic;
-  prefix: numbers;
-  suffix: additive;
-  range: extends;
-  pad: cjk-decimal;
-  fallback: disclosure-open;
-  symbols: disclosure-closed;
-  additive-symbols: simp-chinese-informal;
-  speak-as: simp-chinese-formal;
+  prefix: additive;
+  suffix: extends;
+  range: bullets;
+  pad: numbers;
+  fallback: words;
+  symbols: symbols("*" "\2020" "\2021" "\A7");
+  additive-symbols: auto;
+  speak-as: auto;
+}
+
+.counter-style {
+  display: arabic-indic;
+  display: upper-armenian;
+  display: lower-armenian;
+  display: bengali;
+  display: cambodian;
+  display: khmer;
+  display: cjk-decimal;
+  display: devanagari;
+  display: gujarati;
+  display: gurmukhi;
+  display: kannada;
+  display: lao;
+  display: malayalam;
+  display: mongolian;
+  display: myanmar;
+  display: oriya;
+  display: persian;
+  display: tamil;
+  display: telugu;
+  display: thai;
+  display: tibetan;
+  display: cjk-earthly-branch;
+  display: cjk-heavenly-stem;
+  display: disclosure-closed;
+  display: disclosure-open;
+  display: japanese-informal;
+  display: japanese-formal;
+  display: korean-hangul-formal;
+  display: korean-hanja-informal;
+  display: korean-hanja-formal;
+  display: simp-chinese-informal;
+  display: simp-chinese-formal;
   display: trad-chinese-informal;
   display: trad-chinese-formal;
   display: ethiopic-numeric;
-  display: symbols("*" "\2020" "\2021" "\A7");
-  display: bullets;
-  display: words;
 }
 
 .display {
@@ -219,16 +251,6 @@
   grid-area: auto;
 }
 
-.hyperlinks {
-  target: current;
-  target-name: new;
-  target-new: modal;
-  target-position: window;
-  display: tab;
-  display: front;
-  display: back;
-}
-
 .images {
   object-fit: contain;
   object-position: cover;
@@ -240,6 +262,11 @@
   display: radial-gradient(farthest-corner at 50% 50%, yellow, green);
   display: repeating-linear-gradient(to bottom, yellow, blue);
   display: repeating-radial-gradient(farthest-corner at 50% 50%, yellow, green);
+}
+
+.inline {
+  initial-letter: ideographic;
+  initial-letter-align: auto;
 }
 
 .layout::slot(b) {
@@ -280,16 +307,6 @@
   marker-side: marker;
   counter-set: list-container;
   display: counters(list-item, '.');
-}
-
-.marquee {
-  marquee-direction: forward;
-  marquee-play-count: reverse;
-  marquee-speed: infinite;
-  marquee-style: slide;
-  display: alternate;
-  display: marquee-line;
-  display: marquee-block;
 }
 
 .masking {
@@ -342,8 +359,18 @@
   display: verso;
 }
 
-.preslev {
-  presentation-level: increment;
+.positioning {
+  offset-before: sticky;
+  offset-end: auto;
+  offset-after: auto;
+  offset-start: auto;
+}
+
+.pseudo::selection,
+.pseudo::spelling-error,
+.pseudo::grammer-error,
+.pseuod::placeholder {
+  display: block;
 }
 
 .regions:region {
@@ -527,17 +554,10 @@
   display: cubic-bezier(0.25, 0.1, 0.25, 1.0);
 }
 
-.ui {
-  icon: active;
-  resize: inactive;
-  box-sizing: disabled;
-  ime-mode: root;
-  nav-index: horizontal;
-  nav-up: vertical;
-  nav-right: clip;
-  nav-down: ellipsis;
-  nav-left: auto;
-  outline-offset: auto;
+.ui::value,
+.ui::choices {
+  caret-color: grab;
+  display: grabbing;
 }
 
 .values {

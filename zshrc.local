@@ -9,7 +9,7 @@ ZSH=$HOME/.oh-my-zsh
 DISABLE_UPDATE_PROMPT=true
 ZSH_THEME="af-magic"
 
-plugins=(git virtualenv python docker)
+plugins=()
 
 source $ZSH/oh-my-zsh.sh
 export WORKON_HOME="$HOME/.virtualenvs"

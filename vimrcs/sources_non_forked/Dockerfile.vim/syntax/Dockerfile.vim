@@ -18,10 +18,11 @@ syn keyword dockerfileKeywords VOLUME USER WORKDIR ONBUILD
 
 " Bash statements
 setlocal iskeyword+=-
-syn keyword bashStatement chmod chown clear complete du egrep expr fgrep cd
+syn keyword bashStatement chmod chown chgrp clear complete du egrep expr fgrep cd
+syn keyword bashStatement useradd adduser groupadd
 syn keyword bashStatement find gnufind gnugrep grep less ls echo
-syn keyword bashStatement mkdir mv rm rmdir rpm sed sleep sort strip tail touch
-syn keyword bashStatement aptitude apt-get add-apt-repository yum rpm pacman
+syn keyword bashStatement mkdir mv cp rm rmdir rpm sed sleep sort strip tail tailf touch head
+syn keyword bashStatement aptitude apt-key apt-get add-apt-repository yum rpm pacman
 syn keyword bashStatement node npm python virtualenv ruby php composer
 "syn keyword bashStatement svn git hg bzr
 
@@ -30,7 +31,7 @@ syn region dockerfileString start=/"/ skip=/\\"/ end=/"/
 syn region dockerfileString1 start=/'/ skip=/\\'/ end=/'/
 
 " Emails
-syn region dockerfileEmail start=/</ end=/>/ contains=@
+syn region dockerfileEmail start=/</ end=/>/ contains=@ oneline
 
 " Urls
 syn match dockerfileUrl /\(http\|https\|ssh\|hg\|git\)\:\/\/[a-zA-Z0-9\/\-\.]\+/
@@ -50,3 +51,6 @@ hi link bashStatement       Function
 let b:current_syntax = "dockerfile"
 
 set commentstring=#\ %s
+
+" Enable automatic comment insertion
+setlocal fo+=cro

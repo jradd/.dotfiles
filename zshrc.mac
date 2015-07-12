@@ -1,0 +1,22 @@
+# Z-Sh - OS X
+
+# Alias - Mac
+alias l="ls -Ax"
+alias ls="ls -GFhA"
+alias la="ls -ltrkeO"
+alias ll="la -LA"
+alias lo="la -m"
+
+# tmux
+alias tmux="tmux -2 -u new -s TMUX"
+
+
+
+# git
+
+# virtualenv
+
+
+# misc
+
+
