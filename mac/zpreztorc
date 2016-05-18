@@ -156,3 +156,9 @@ zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 
 # Integrate with iTerm2.
 zstyle ':prezto:module:tmux:iterm' integrate 'yes'
+
+# %v - virtualenv name.
+zstyle ':prezto:module:python:info:virtualenv' format 'virtualenv:%v'
+# Then add $python_info[virtualenv] to $PROMPT or $RPROMPT and call python-info
+# in the prompt_name_preexec hook function.
+source ~/.zshenv

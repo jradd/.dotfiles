@@ -7,6 +7,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+set t_Co=256
 # Alias
 # OSX
 alias fixow='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain user;killall Finder;echo "Open With has been rebuilt, Finder will relaunch"'
@@ -54,3 +55,6 @@ BASE16_SHELL="$HOME/Dev/github.com/chriskempson/base16-shell/base16-eighties.dar
 autoload -Uz promptinit
 promptinit
 prompt sorin
+PATH=/usr/local/bin:/usr/local/sbin:/Users/radd/.pyenv/shims:/Library/Frameworks/Python.framework/Versions/3.4/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/radd/.pyenv/shims:/Library/Frameworks/Python.framework/Versions/3.4/bin
+
+alias bpython34=/Library/Frameworks/Python.framework/Versions/3.4/bin/bpython

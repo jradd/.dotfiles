@@ -1,4 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/Users/radd/.oh-my-zsh/themes'
-let g:netrw_dirhist_2='/Users/radd/.dotfiles/mac'
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/radd/.zprezto/modules/prompt/functions'
+let g:netrw_dirhist_2='/Users/radd/workdir/out/code/cookbook'
+let g:netrw_dirhist_3='/Users/radd/repo/cython-book/chapter1/helloworld'
+let g:netrw_dirhist_4='/Users/radd/repo/cython-book/chapter1/ownmodule'
+let g:netrw_dirhist_5='/Users/radd/workdir/in/code/python-cookbook/src/7/functions_with_default_arguments'
+let g:netrw_dirhist_6='/Users/radd/workdir/out/notes'
+let g:netrw_dirhist_7='/Users/radd/workdir/out/notes-backup'
+let g:netrw_dirhist_8='/mnt/nfs/python/learning-python'
+let g:netrw_dirhist_9='/Users/radd/Public'

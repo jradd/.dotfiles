@@ -1,8 +1,10 @@
 " =============================================================================
-" MAINTAINER          "Jeremy Redd <jredd42@gmail.com>"
-" SERIAL              "071501"
-" DIFF                "fixed vundle; configured for zprezto; appended markdown fix"
-" COMMENT             "This is my current zshrc, used on mbp with zsh, tmux"
+" MAINTAINER "Jeremy Redd <jredd42@gmail.com>"
+" SERIAL    "071501"
+" DIFF      "fixed vundle; configured for zprezto; appended markdown fix"
+" COMMENT   "This is my current zshrc, used on mbp with zsh, tmux"
+" SERIAL    "111500"
+" COMMENT   "c.vim added"
 " =============================================================================
 set nocompatible
 set t_Co=256
@@ -30,11 +32,18 @@ Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-fugitive'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'godlygeek/tabular'
-Bundle 'plasticboy/vim-markdown'
+Bundle 'tpope/vim-markdown'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'ekalinin/Dockerfile.vim'
 Bundle 'chase/vim-ansible-yaml'
+Bundle 'ervandew/supertab'
+""Bundle 'davidhalter/jedi-vim'
+Bundle 'vim-scripts/c.vim'
+Bundle 'klen/python-mode'
+Bundle 'rhysd/vim-crystal'
+
+
 " Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 call vundle#end()
@@ -60,7 +69,7 @@ set cmdheight=2                   " and use a two-line tall status line
 set showcmd                       " show the command
 set autoindent                    " turns it on
 set smartindent                   " does the right thing (mostly) in programs
-set linespace=3                   " prefer a slight higher line height
+set linespace=2                   " prefer a slight higher line height
 set wrap                          " use line wrapping
 set textwidth=79                  " at column 79
 set formatoptions=qrn1
@@ -72,7 +81,7 @@ set number                        " except for the current line - absolute numbe
 set backspace=indent,eol,start    " make backspace behave in a sane manner
 set mousehide                     " hide mouse when typing
 set foldenable                    " enable code folding
-set history=1000
+set history=10000
 set ffs=unix,mac,dos              " default file types
 set autoread                      " automatically update file when editted outside of vim
 
@@ -111,8 +120,8 @@ colorscheme solarized
 " -------------------------
 " Set tab stuff
 " -------------------------
-set tabstop=2           " 2 spaces for a tab
-set shiftwidth=2        " 2 spaces for autoindenting
+set tabstop=4           " 2 spaces for a tab
+set shiftwidth=4        " 2 spaces for autoindenting
 set softtabstop=2       " when <BS>, pretend a tab is removed even if spaces
 set expandtab           " expand tabs to spaces (overloadable by file type)
 
@@ -171,10 +180,12 @@ autocmd BufNewFile,BufRead *.rss,*.atom setfiletype xml
 autocmd BufRead COMMIT_EDITMSG setlocal spell spelllang=en_us
 " start commit message in insert mode
 autocmd BufNewFile,BufRead COMMIT_EDITMSG call feedkeys('ggi', 't')
+
 " markdown files
-autocmd BufNewFile,BufRead *.md,*.mkd,*.markdown setfiletype markdown
-autocmd BufNewFile,BufRead *.md,*.mkd,*.markdown set spell spelllang=en_us
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufRead *.md set spell spelllang=en_us
 autocmd FileType markdown setlocal tw=100
+
 " non ruby files related to Ruby
 autocmd BufNewFile,BufRead Gemfile,Gemfile.lock,Guardfile setfiletype ruby
 autocmd BufNewFile,BufRead Thorfile,config.ru,Vagrantfile setfiletype ruby
@@ -260,22 +271,13 @@ let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#empty_message = ''
 let g:airline_theme='solarized'
 
-" Vimux settings
-let g:VimuxHeight = "30"
-let g:VimuxOrientation = "v"
-let g:VimuxUseNearestPane = 0
 
 " ----------------------------------------
 "  Keymaps
 " ----------------------------------------
 
-" silly habbits
-nnoremap ; :
-nnoremap Q <nop>
-nnoremap q <nop>
-
 " ------------------------
-" Nav/movement
+" Nav/Movement
 " -------------------------
 " disable arrow keys
 map <up> <nop>
@@ -301,24 +303,9 @@ nnoremap <leader> <esc>:wq!
 " Opens file to cwd
 set browsedir=buffer
 
-" Vimux Mappings
-nmap <leader>vp :VimuxPromptCommand<cr>
-nmap <leader>vl :VimuxRunLastCommand<cr>
-nmap <leader>vq :VimuxCloseRunner<cr>
-nmap <leader>vx :VimuxInterruptRunner<cr>
-
-" Vimux Octopress helpers
-nmap <leader>vg :call VimuxRunCommand("gen")<CR>
-nmap <leader>vi :call VimuxRunCommand("ingen")<CR>
-nmap <leader>vz :call VimuxRunCommand("dz")<CR>
-nmap <leader>vd :call VimuxRunCommand("deploy")<CR>
-
-" Fix markdown
-autocmd BufNewFile,BufRead *.md set filetype=markdown
 " ----------------------------------------
 "  Misc
 " ----------------------------------------
-
 " strip whitespace from all lines in file
 nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
 
@@ -347,3 +334,20 @@ noremap <Leader>i :set list!<CR>
 set pastetoggle=<F2>
 
 set clipboard=unnamed   " yank and paste with the system clipboard
+
+
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+
+" ----------------------------------------
+" Syntastic
+"  ----------------------------------------
+let g:syntastic_python_python_exec = '/Library/Frameworks/Python.framework/Versions/3.4/bin/python3'
+
+let g:pymode_options = 1
+" python-mode doc key:
+let g:pymode_doc_bind = 'K'
+" virtualenv auto-detect
+""" let g:pymode_virtualenv = 1
+" virtualenv manual-detect
+""" let g:pymode_virtualenv_path = $VIRTUAL_ENV
