@@ -1,12 +1,17 @@
 
 
-getip=$(curl -k https://wtfismyip.com  |egrep -o "[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}")
+#getip=$(curl -k https://wtfismyip.com  |egrep -o "[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}")
 
-function _wtfip() {
+_wtfip() {
 printf "YOUR FUCKING IP IS >>>\n %s\n" "$getip"
 }
 
-function _gol_commit() {
-[[ -d ./.git*(#qN) ]] && print echo "True"
-print "This"
+_gc() {
+   d=`pwd`
+if [[ -d ./.git ]]; then 
+    echo "yay" && git add -A && git commit -am "boof"; return 1
+else
+    echo "Run from a git repo"
+    return 0
+fi
 }
