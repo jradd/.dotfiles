@@ -18,7 +18,8 @@ Bundle 'gmarik/Vundle.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdtree'
-Bundle 'bling/vim-airline'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 Bundle 'mileszs/ack.vim'
 Bundle 'vim-scripts/HTML-AutoCloseTag'
 Bundle 'vim-scripts/mayansmoke'
@@ -342,7 +343,14 @@ match OverLength /\%81v.\+/
 " ----------------------------------------
 " Syntastic
 "  ----------------------------------------
-let g:syntastic_python_python_exec = '/Library/Frameworks/Python.framework/Versions/3.4/bin/python3'
+"  Mac OS X
+"""let g:syntastic_python_python_exec = '/Library/Frameworks/Python.framework/Versions/3.4/bin/python3'
+" Debian/Ubuntu
+
+"""let g:syntastic_python_python_exec = '/usr/bin/python3'
+
+" CygWin
+let g:syntastic_python_python_exec = '/bin/python3'
 
 let g:pymode_options = 1
 " python-mode doc key:
