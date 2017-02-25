@@ -61,3 +61,14 @@ bindkey '^i' expand-or-complete-prefix
 [[ -r ${HOME}/.zshrc.local ]] && source ${HOME}/.zshrc.local
 
 #export PATH=$PATH:$HOME/.rvm/bin
+
+if [[ -f "${ZDOTDIR:-$HOME}/.zpreztorc" ]]; then
+    autoload -Uz promptinit
+    promptinit
+    prompt nicoulaj
+fi
+
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+    source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
